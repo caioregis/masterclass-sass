@@ -1,0 +1,45 @@
+$text-color:white;
+
+@mixin box-shadow($color) {
+    box-shadow: 2px 2px 4px 4px $color;
+}
+
+@mixin text-effect($val) {
+    @if $val==danger {
+        color: red;
+    }
+
+    @else if $val==warning {
+        color: yellow;
+    }
+
+    @else {
+        color: black;
+    }
+}
+
+
+@mixin make-bold($bool) {
+    @if $bool==true {
+        font-weight: bold;
+    }
+}
+
+body {
+    background-color: #7959c1;
+    color: $text-color;
+}
+
+.container {
+    @include box-shadow(rgba(0, 0, 0, 0.6));
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    $text-color2: white;
+
+    p {
+        color: $text-color;
+        @include make-bold(true);
+        @include text-effect(warning);
+    }
+}
